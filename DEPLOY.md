@@ -57,6 +57,17 @@ npm start
 
 A API fica, por omissão, na porta 3000. Usa HTTPS através de um reverse proxy (por exemplo, Caddy ou Nginx), firewall e backups da base de dados.
 
+### Arranque com Docker Compose (VPS)
+
+Na pasta `api`, cria o ficheiro `.env` a partir de `.env.example`, preenche os valores reais e executa:
+
+```bash
+docker compose up -d --build
+docker compose logs -f
+```
+
+O Compose mantém a base de dados num volume persistente e publica a porta 3000 apenas em `127.0.0.1`, para que um proxy HTTPS local (Caddy/Nginx) a possa encaminhar. Configura o domínio e o certificado TLS no proxy antes de apontar o site para a API. Não abras a porta 3000 diretamente à Internet.
+
 ## 3. Ligar o frontend ao backend
 
 No ficheiro `config.js`, define `window.SERVIDOR_GG_API_URL` para o URL HTTPS público da API, por exemplo `https://api.teudominio.pt`. O valor é público e não deve conter segredos.
