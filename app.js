@@ -62,7 +62,7 @@ authForm.addEventListener("submit", async (event) => {
     sessionStorage.setItem("servidorGGToken", token);
     authMessage.textContent = "Sessão iniciada com sucesso.";
     document.getElementById("loginBtn").textContent = "Conta ativa";
-    setTimeout(() => authDialog.close(), 700);
+    setTimeout(() => authDialog.close(), 700);\n    refreshServers();
   } catch (error) {
     authMessage.textContent = error.message;
   }
@@ -129,3 +129,43 @@ document.getElementById("copyIp").addEventListener("click", async () => {
 
 if (token) document.getElementById("loginBtn").textContent = "Conta ativa";
 loadCatalog();
+
+async function refreshServers() {
+  const list = document.getElementById("serverList");
+  const status = document.getElementById("accountStatus");
+  if (!token) {
+    status.textContent = "Sessão não iniciada";
+    list.innerHTML = '<div class="empty-servers">Inicia sessão para veres os teus servidores.</div>';
+    return;
+  }
+  status.textContent = "A carregar...";
+  try {
+    const data = await apiRequest("/api/servers");
+    status.textContent = data.servers.length + (data.servers.length === 1 ? " servidor na tua conta" : " servidores na tua conta");
+    list.replaceChildren();
+    if (!data.servers.length) {
+      list.innerHTML = '<div class="empty-servers">Ainda não tens servidores. Usa o configurador acima para preparar o primeiro.</div>';
+      return;
+    }
+    for (const server of data.servers) {
+      const card = document.createElement("article");
+      card.className = "managed-server";
+      const title = document.createElement("h3");
+      title.textContent = server.name;
+      const details = document.createElement("p");
+      details.textContent = server.software + " · Minecraft " + server.version;
+      const id = document.createElement("span");
+      id.textContent = "ID do painel: " + server.id;
+      card.append(title, details, id);
+      list.append(card);
+    }
+  } catch (error) {
+    status.textContent = "Não foi possível carregar";
+    list.replaceChildren();
+    const message = document.createElement("div");
+    message.className = "empty-servers";
+    message.textContent = error.message;
+    list.append(message);
+  }
+}
+document.getElementById("refreshServers").addEventListener("click", refreshServers);
