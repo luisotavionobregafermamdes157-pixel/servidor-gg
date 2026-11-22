@@ -134,7 +134,7 @@ app.get("/api/servers", auth, (req, res) => {
   res.json({ servers });
 });
 
-app.post("/api/servers", auth, async (req, res) => {
+app.post("/api/servers", auth, rateLimit({ windowMs: 60 * 60_000, limit: 2 }), async (req, res) => {
   const parsed = serverSchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: "Verifica o nome, software, versão e memória escolhidos." });
   const maxRam = Number(process.env.MAX_RAM_MB || 4096);
