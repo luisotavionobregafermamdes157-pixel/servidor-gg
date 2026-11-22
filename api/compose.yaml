@@ -1,0 +1,30 @@
+services:
+  servidor-gg-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: servidor-gg-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_PATH: /var/lib/servidor-gg/servidor-gg.sqlite
+    volumes:
+      - servidor_gg_data:/var/lib/servidor-gg
+    ports:
+      - "127.0.0.1:3000:3000"
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  servidor_gg_data:
