@@ -70,7 +70,7 @@ Depois publica novamente o frontend no GitHub Pages.
 - Só é possível criar os softwares mapeados em `EGG_MAP_JSON`. Para disponibilizar todas as opções, instala e configura os Eggs correspondentes e valida a compatibilidade de versões.
 - O catálogo da Mojang lista versões Java release; isso não significa que todos os Eggs suportem todas as versões.
 - Esta versão ainda não inclui consola em tempo real, iniciar/parar/reiniciar, ficheiros, plugins, mods, backups acionáveis, pagamentos, quotas por utilizador, verificação de email, recuperação de password, painel administrativo ou proteção anti-abuso de produção.
-- Antes de abrir registos ao público, adiciona quotas, limites globais, verificação de email, monitorização, backups, políticas de retenção e testes de segurança. Configura também limites de RAM/disco/CPU que correspondam à capacidade real do node.
+- Antes de abrir registos ao público, adiciona verificação de email, quotas globais por node, monitorização, backups, políticas de retenção e testes de segurança. O MVP já limita pedidos de criação por hora e servidores por conta, mas isso não substitui controlos completos de capacidade. Configura também limites de RAM/disco/CPU que correspondam à capacidade real do node.
 
 ## 5. Verificar
 
