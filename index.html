@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07110e">
+  <meta name="description" content="Servidor GG — cria e gere o teu servidor Minecraft.">
+  <title>Servidor GG — O teu mundo começa aqui</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="glow glow-one"></div><div class="glow glow-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">GG</span><span>servidor<span class="green">.gg</span></span></a>
+    <nav><a href="#funcionalidades">Funcionalidades</a><a href="#planos">Planos</a><a href="#painel">Painel</a></nav>
+    <div class="top-actions"><button class="btn btn-quiet" id="loginBtn">Entrar</button><a class="btn btn-primary" href="#criar">Criar servidor <span>↗</span></a></div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> A TUA AVENTURA COMEÇA AQUI</div>
+        <h1>O teu mundo.<br><span class="gradient-text">As tuas regras.</span></h1>
+        <p class="hero-text">Cria o teu servidor Minecraft e junta os teus amigos. Configuração simples, controlo total e espaço para imaginares sem limites.</p>
+        <div class="hero-actions"><a class="btn btn-primary btn-large" href="#criar">Criar o meu servidor <span>→</span></a><a class="btn btn-outline btn-large" href="#funcionalidades">Explorar plataforma</a></div>
+        <div class="trust-row"><div class="avatars"><i>⛏</i><i>🌲</i><i>⚔</i></div><span>Feito para quem vive Minecraft.</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-top"><span class="window-dots">● ● ●</span><span>SERVER OVERVIEW</span><span class="live"><b></b> DEMO</span></div>
+        <div class="game-scene"><div class="sun"></div><div class="mountain m1"></div><div class="mountain m2"></div><div class="block-tree">♣</div><div class="scene-label"><span>O TEU PRÓXIMO MUNDO</span><strong>Survival awaits.</strong></div></div>
+        <div class="server-card">
+          <div class="server-icon">⛏</div><div class="server-info"><strong>Meu mundo survival</strong><span>Java Edition · 1.21.x</span></div><span class="status-pill"><i></i> Pré-visualização</span>
+          <div class="server-address"><span>ENDEREÇO DO SERVIDOR</span><strong>play.servidor.gg <button id="copyIp" aria-label="Copiar endereço">▣</button></strong></div>
+        </div>
+      </div>
+    </section>
+    <section class="metrics"><div><strong>01</strong><span>Escolhe a versão</span></div><div><strong>02</strong><span>Configura os recursos</span></div><div><strong>03</strong><span>Convida os teus amigos</span></div><div class="metric-note">Simples desde o primeiro bloco.</div></section>
+    <section class="section" id="funcionalidades">
+      <div class="section-heading"><div class="eyebrow">TUDO NUM SÓ LUGAR</div><h2>Mais jogo. Menos complicações.</h2><p>Uma experiência clara para configurares e acompanhares o teu servidor.</p></div>
+      <div class="feature-grid">
+        <article class="feature"><span class="feature-icon">▦</span><h3>Java e Bedrock</h3><p>Prepara o teu espaço para jogar na edição que preferes.</p></article>
+        <article class="feature"><span class="feature-icon">⌘</span><h3>Controlo simples</h3><p>Um painel pensado para acompanhar o estado e os recursos do servidor.</p></article>
+        <article class="feature"><span class="feature-icon">⌁</span><h3>Plugins e mods</h3><p>Planeia a tua experiência com suporte para personalização.</p></article>
+        <article class="feature"><span class="feature-icon">♧</span><h3>O teu espaço</h3><p>Organiza as definições e prepara o mundo à tua maneira.</p></article>
+      </div>
+    </section>
+    <section class="section create-section" id="criar">
+      <div class="create-copy"><div class="eyebrow">PRIMEIRO PASSO</div><h2>Constrói o teu<br><span class="gradient-text">próximo mundo.</span></h2><p>Escolhe as opções para preparar a configuração do teu servidor.</p><div class="notice"><span>ⓘ</span><p>Esta versão é uma demonstração visual. A criação de servidores reais exige ligação a um alojamento e a um painel de gestão, como o Pterodactyl.</p></div></div>
+      <form class="create-form" id="serverForm">
+        <div class="form-title"><div><span class="form-kicker">CONFIGURADOR</span><h3>Novo servidor</h3></div><span class="step-tag">PASSO 1 / 1</span></div>
+        <label for="serverName">Nome do servidor</label><input id="serverName" name="serverName" placeholder="Ex.: Mundo dos amigos" maxlength="32" required>
+        <div class="form-row"><div><label for="edition">Edição</label><select id="edition"><option>Java</option><option>Bedrock</option></select></div><div><label for="version">Versão</label><select id="version"><option>1.21.4</option><option>1.21.1</option><option>1.20.4</option><option>1.19.4</option></select></div></div>
+        <label for="serverType">Tipo de servidor</label><select id="serverType"><option>Vanilla</option><option>Paper</option><option>Fabric</option><option>Forge</option></select>
+        <label for="memory">Memória RAM <strong id="ramValue">4 GB</strong></label><input type="range" id="memory" min="2" max="16" value="4" step="2">
+        <button class="btn btn-primary btn-large full" type="submit">Preparar configuração <span>→</span></button>
+        <p class="form-foot">Sem pagamento nesta demonstração.</p>
+        <div class="result" id="result" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+    <section class="section plans" id="planos"><div class="section-heading"><div class="eyebrow">PLANOS</div><h2>Começa ao teu ritmo.</h2><p>Os planos abaixo são exemplos ilustrativos, ainda sem cobrança ativa.</p></div><div class="plan-grid">
+      <article class="plan"><span class="plan-name">STARTER</span><h3>Grátis</h3><p>Para experimentar e preparar o teu primeiro mundo.</p><ul><li>Configuração inicial</li><li>Java ou Bedrock</li><li>Painel de demonstração</li></ul><a href="#criar" class="btn btn-outline full">Começar</a></article>
+      <article class="plan plan-featured"><span class="popular">POPULAR</span><span class="plan-name">ADVENTURE</span><h3>Por definir</h3><p>Mais recursos para comunidades em crescimento.</p><ul><li>Mais memória e capacidade</li><li>Personalização avançada</li><li>Gestão de servidor</li></ul><a href="#criar" class="btn btn-primary full">Escolher plano</a></article>
+      <article class="plan"><span class="plan-name">NETWORK</span><h3>Por definir</h3><p>Para projetos maiores e várias experiências.</p><ul><li>Recursos dedicados</li><li>Vários mundos</li><li>Gestão avançada</li></ul><a href="#criar" class="btn btn-outline full">Saber mais</a></article>
+    </div></section>
+    <section class="bottom-cta" id="painel"><div><div class="eyebrow">PRONTO PARA COMEÇAR?</div><h2>O próximo bloco é teu.</h2><p>Prepara a configuração e dá forma à tua comunidade.</p></div><a href="#criar" class="btn btn-primary btn-large">Criar servidor <span>→</span></a></section>
+  </main>
+  <footer><a class="brand" href="#"><span class="brand-mark">GG</span><span>servidor<span class="green">.gg</span></span></a><span>© 2026 Servidor GG · Projeto em desenvolvimento.</span><span>Não afiliado à Mojang ou Microsoft.</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
