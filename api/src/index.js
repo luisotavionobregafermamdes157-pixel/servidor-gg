@@ -93,7 +93,7 @@ app.get("/api/catalog", async (_req, res) => {
     const response = await fetch("https://piston-meta.mojang.com/mc/game/version_manifest_v2.json");
     if (response.ok) {
       const manifest = await response.json();
-      versions = manifest.versions.filter((item) => item.type === "release").slice(0, 80).map((item) => ({ id: item.id, type: item.type }));
+      versions = manifest.versions.filter((item) => item.type === "release").map((item) => ({ id: item.id, type: item.type }));
     }
   } catch { /* O catálogo continua disponível sem a lista remota. */ }
   let eggMap = {};
